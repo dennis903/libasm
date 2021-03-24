@@ -1,18 +1,16 @@
-section	.data
-	msg db "hello", 0x0A, 0x00
-
 section .text
-	global _main
+	global _ft_strlen
 
-_main :
-	mov rax, 1
-	mov rbp, 0
-	mov rsp, rbp
-	sub rsp, 7
-	mov rdi, 1
-	mov rsi, msg
-	mov rdx, 7
-	syscall
-	mov rax, 60
-	mov rdi, 0
-	syscall
+_ft_strlen :
+	mov rax, 0
+	jmp count
+
+count :
+	cmp BYTE[rdi + rax], 0
+	je end
+	inc rax
+	jmp count
+
+end :
+	ret
+
